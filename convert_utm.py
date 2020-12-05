@@ -61,7 +61,7 @@ def utmToLatLng(zone, easting, northing, northernHemisphere=True):
 
 
 def convertor(input):
-    newInput = input.split('|')
+    newInput = input.split()
     subId = str(newInput[0])
     east = float(newInput[1])
     north = float(newInput[2])
@@ -81,9 +81,21 @@ def convertor(input):
 
 #input = '64304780|528496.7469|3955737.44015'
 
-file1 = open('test_data.txt', 'r') 
-lines = file1.readlines() 
+file1 = open('new_gis.txt', 'r')
+lines = file1.readlines()
+newList = []
 
 for input in lines:
     new_data = convertor(input)
-    print(new_data)
+    convertedstr = ""
+    for obj in new_data:
+        obj += '|'
+        convertedstr += obj
+    
+    file1 = open('newoutfile.txt', 'a')
+    file1.writelines(convertedstr+'\n')
+    file1.close()
+    newList.append(convertedstr)
+
+
+print('done')
