@@ -79,12 +79,11 @@ def convertor(input):
     return new
 
 
-input = '64304780|528496.7469|3955737.44015'
+#input = '64304780|528496.7469|3955737.44015'
 
 file1 = open('test_data.txt', 'r') 
-Lines = file1.readlines() 
+lines = file1.readlines() 
 
-new_data = convertor(input)
-print(new_data[0])
-print(new_data[1])
-print(new_data[2])
+for input in lines:
+    new_data = convertor(input)
+    print(new_data)
